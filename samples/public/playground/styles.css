@@ -9,7 +9,6 @@ main {
     padding: 10px;
 }
 
-
 ul {
     list-style: none;
     padding: 0;
@@ -23,13 +22,11 @@ ul {
     padding: 10px;
 }
 
-
-
 textarea {
     padding: 8px;
     width: 90%;
     height: 300px;
-    min-width: 300px;;
+    min-width: 300px;
     background-color: #444;
     color: white;
     font-size: 18px;
