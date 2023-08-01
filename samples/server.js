@@ -41,6 +41,7 @@ app.post("/api/general", async (req, res) => {
 
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
+        temperature: 0,
         messages: [{ role: "user", content: body.prompt }],
     });
     res.json(completion.data.choices[0].message.content);
@@ -62,14 +63,14 @@ app.post("/api/recipe", async (req, res) => {
     const body = req.body;
 
     const prompt = `Give me a recipe with the list of ingredientes defined in the markup
-  <ingredients>${body.ingredients}</ingredients>
-  You can take for granted other basic ingredients, such as salt, pepper and other condiments we usually find in a kitchen.  
-  
-  If the input is empty of you can't find a list of ingredients for a recipe, just answer with the lowercase string "false" with no other characters.
+    <ingredients>${body.ingredients}</ingredients>
+    You can take for granted other basic ingredients, such as salt, pepper and other condiments we usually find in a kitchen.  
+    
+    If the input is empty of you can't find a list of ingredients for a recipe, just answer with the lowercase string "false" with no other characters.
 
-If you've found a recipe for the ingredients, send the output in JSON format as the sample enclosed in ***.
+    If you've found a recipe for the ingredients, send the output in JSON format as the sample enclosed in ***.
 
-If one step's description has a time declaration like 'for 30 minutes', add the timer property with the value in minutes as in '"timer": 30'.
+    If one step's description has a time declaration like 'for 30 minutes', add the timer property with the value in minutes as in '"timer": 30'.
 
 ***
     {
@@ -102,7 +103,7 @@ If one step's description has a time declaration like 'for 30 minutes', add the 
         ]
     }
 ***
-`;
+    `;
 
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
